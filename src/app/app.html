@@ -1,0 +1,47 @@
+<div class="shell">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo"><fa-icon [icon]="flask" /></span>
+      <div class="brand-text">
+        <span class="name">Evolution Lab</span>
+        <span class="tag">{{ i18n.ui().subtitle }}</span>
+      </div>
+    </div>
+
+    <nav class="tabs" aria-label="Tracks">
+      <a routerLink="/angular" routerLinkActive="active" class="tab">
+        <fa-icon [icon]="angular" /> <span>Angular</span>
+      </a>
+      <a routerLink="/typescript" routerLinkActive="active" class="tab">
+        <fa-icon [icon]="js" /> <span>TypeScript</span>
+      </a>
+    </nav>
+
+    <button
+      type="button"
+      class="lang-btn"
+      (click)="toggleLang()"
+      [attr.aria-label]="i18n.ui().langLabel"
+    >
+      {{ lang() === 'ru' ? 'EN' : 'RU' }}
+    </button>
+
+    <button
+      type="button"
+      class="theme-btn"
+      (click)="toggleTheme()"
+      [attr.aria-label]="mode() === 'dark' ? i18n.ui().themeToLight : i18n.ui().themeToDark"
+    >
+      <fa-icon [icon]="mode() === 'dark' ? sun : moon" />
+    </button>
+  </header>
+
+  <main class="content">
+    <router-outlet />
+  </main>
+
+  <footer class="foot">
+    <span>{{ i18n.ui().footer1 }}</span>
+    <span>{{ i18n.ui().footer2 }}</span>
+  </footer>
+</div>

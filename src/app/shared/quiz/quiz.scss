@@ -1,0 +1,117 @@
+:host {
+  display: block;
+}
+
+.quiz {
+  border: 1px solid var(--evo-border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  background: color-mix(in srgb, var(--mat-sys-tertiary) 6%, var(--mat-sys-surface));
+}
+
+.q {
+  margin: 0 0 0.85rem;
+  font-weight: 600;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+
+  fa-icon {
+    color: var(--mat-sys-tertiary);
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: start;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--evo-border);
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: border-color 0.15s, background 0.15s, transform 0.05s;
+
+  &:hover:not(:disabled) {
+    border-color: var(--mat-sys-primary);
+    transform: translateX(2px);
+  }
+  &:disabled {
+    cursor: default;
+  }
+  &.correct {
+    border-color: var(--evo-success);
+    background: color-mix(in srgb, var(--evo-success) 14%, transparent);
+  }
+  &.wrong {
+    border-color: var(--mat-sys-error);
+    background: color-mix(in srgb, var(--mat-sys-error) 12%, transparent);
+  }
+}
+
+.marker {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  .correct & {
+    background: var(--evo-success);
+    color: #fff;
+  }
+  .wrong & {
+    background: var(--mat-sys-error);
+    color: #fff;
+  }
+}
+
+.result {
+  margin: 0.85rem 0 0.25rem;
+  font-weight: 700;
+  color: var(--mat-sys-error);
+  &.win {
+    color: var(--evo-success);
+  }
+}
+
+.explain {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--mat-sys-on-surface-variant);
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+
+  fa-icon {
+    color: var(--mat-sys-tertiary);
+  }
+}
+
+.retry {
+  font-size: 0.78rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--mat-sys-primary);
+  background: transparent;
+  color: var(--mat-sys-primary);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
+  }
+}

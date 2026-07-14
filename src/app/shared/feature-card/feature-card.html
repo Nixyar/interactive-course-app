@@ -1,0 +1,66 @@
+<mat-expansion-panel class="fc" [class.learned]="learned()" [attr.data-level]="feature().level">
+  <mat-expansion-panel-header collapsedHeight="auto" expandedHeight="auto">
+    <mat-panel-title>
+      <span class="ficon"><fa-icon [icon]="faIcon()" /></span>
+      <span class="titles">
+        <span class="ftitle">{{ i18n.pick(feature().title) }}</span>
+        <span class="fsummary">{{ i18n.pick(feature().summary) }}</span>
+      </span>
+    </mat-panel-title>
+    <mat-panel-description>
+      <span class="badge" [attr.data-level]="feature().level">{{ levelLabel() }}</span>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="body">
+    @if (feature().details; as details) {
+      <ul class="details">
+        @for (d of i18n.pick(details); track $index) {
+          <li>{{ d }}</li>
+        }
+      </ul>
+    }
+
+    @if (feature().beforeAfter; as ba) {
+      <app-before-after [data]="ba" />
+    }
+
+    @if (feature().code?.length) {
+      <div class="codes">
+        @for (c of feature().code; track $index) {
+          <app-code-block [sample]="c" />
+        }
+      </div>
+    }
+
+    @if (feature().demo; as demoKey) {
+      <app-demo-host [key]="demoKey" />
+    }
+
+    @if (feature().quiz; as quiz) {
+      <app-quiz [quiz]="quiz" />
+    }
+
+    <div class="foot">
+      <button
+        type="button"
+        class="learn-btn"
+        [class.on]="learned()"
+        (click)="toggleLearned($event)"
+      >
+        <fa-icon [icon]="learned() ? check : plus" />
+        {{ learned() ? i18n.ui().marked : i18n.ui().markLearned }}
+      </button>
+
+      @if (feature().docs; as docs) {
+        <a class="docs" [href]="docs" target="_blank" rel="noopener">
+          {{ i18n.ui().officialDocs }} <fa-icon [icon]="external" />
+        </a>
+      }
+
+      @for (tag of feature().tags; track tag) {
+        <span class="tag">#{{ tag }}</span>
+      }
+    </div>
+  </div>
+</mat-expansion-panel>

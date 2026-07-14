@@ -1,0 +1,66 @@
+:host {
+  display: block;
+}
+
+.code-block {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--evo-border);
+  background: var(--evo-code-bg);
+  font-size: 0.86rem;
+}
+
+.code-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  background: color-mix(in srgb, var(--evo-code-bg) 88%, var(--mat-sys-on-surface));
+  border-bottom: 1px solid var(--evo-border);
+}
+
+.lang {
+  font-family: var(--evo-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mat-sys-primary);
+  font-weight: 700;
+}
+
+.label {
+  font-size: 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.copy {
+  margin-inline-start: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--evo-border);
+  background: transparent;
+  color: var(--mat-sys-on-surface-variant);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
+  }
+}
+
+pre {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+code {
+  font-family: var(--evo-mono);
+  white-space: pre;
+}
