@@ -1,0 +1,105 @@
+// Angular Material M3 theme — its CSS variables respond to `color-scheme`,
+// which the ThemeService flips on <html> for the dark/light toggle.
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  color-scheme: light; // overridden at runtime by ThemeService on <html>
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$cyan-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+  min-height: 100%;
+}
+
+/* ── App-wide design tokens (adapt to color-scheme via light-dark()) ── */
+:root {
+  --evo-border: light-dark(#e4e6ec, #2a2e39);
+  --evo-code-bg: light-dark(#f7f8fa, #12141b);
+  --evo-success: light-dark(#1a7f43, #43c977);
+  --evo-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.01em;
+}
+
+/* Let Material expansion headers grow to fit our two-line titles */
+.mat-expansion-panel-header {
+  height: auto !important;
+  padding: 0.85rem 1.1rem !important;
+}
+.mat-expansion-panel-body {
+  padding: 0 1.1rem 1rem !important;
+}
+.mat-expansion-panel {
+  background: var(--mat-sys-surface) !important;
+}
+
+/* ── highlight.js token theme (adaptive) ── */
+.hljs-comment,
+.hljs-quote {
+  color: light-dark(#8a94a6, #6b7688);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: light-dark(#0b66d1, #6cb6ff);
+}
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: light-dark(#0a7d4d, #7ee787);
+}
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-attr,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: light-dark(#b3610e, #f0a35e);
+}
+.hljs-function .hljs-title,
+.hljs-title.function_ {
+  color: light-dark(#7b3ff2, #d2a8ff);
+}
+.hljs-variable,
+.hljs-property {
+  color: light-dark(#c0392b, #ff9d7a);
+}
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
+
+/* Nice scrollbars for code/rails */
+*::-webkit-scrollbar { height: 8px; width: 8px; }
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--mat-sys-on-surface) 22%, transparent);
+  border-radius: 999px;
+}
